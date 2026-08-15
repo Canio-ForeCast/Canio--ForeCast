@@ -61,7 +61,7 @@ h6{
   line-height: 1.7;
 }
 .a2{
-  height: 20%;
+  height: 250px;
   width: 100%;
   object-fit:cover;
   display: block;
@@ -72,7 +72,7 @@ h6{
   color: #43545A;
 }
 .a4{
-  height: 180px;
+  height: 250px;
   width: 100%;
   border-radius: 10px;
 }
