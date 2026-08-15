@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CANIO - Weather</title>
+
+  <link rel="stylesheet" href="CSS1.css">
+</head>
+
+<body class="body001">
+
+  <div class="weather-card">
+
+    <!-- Logo -->
+    <img src="logo.png" class="weather-logo" alt="CANIO">
+
+    <h1 class="canio-title">CANIO</h1>
+
+    <p class="subtitle">
+      Your weather. Your day. Your decision.
+    </p>
+
+    <!-- Refresh -->
+    <button onclick="getName()" class="refresh-button">
+      🔄 Refresh Weather
+    </button>
+
+    <!-- Main temperature -->
+    <div class="main-weather">
+
+      <p class="current-label">CURRENT WEATHER</p>
+
+      <h2 id="temperature" class="main-temperature">
+        Loading...
+      </h2>
+
+      <p id="feelsLike" class="feels-like"></p>
+
+    </div>
+
+    <!-- Weather information -->
+    <div class="weather-grid">
+
+      <div class="weather-box">
+        <div class="weather-icon">💧</div>
+        <p class="weather-label">Humidity</p>
+        <h3 id="humidity">--</h3>
+      </div>
+
+      <div class="weather-box">
+        <div class="weather-icon">💨</div>
+        <p class="weather-label">Wind</p>
+        <h3 id="wind">--</h3>
+      </div>
+
+    </div>
+
+    <!-- Future weather -->
+    <!--<div class="future-section">
+
+      <h2>📅 Future Weather</h2>
+
+      <p>
+        Choose a date to explore its hourly forecast.
+      </p>
+
+      <button class="future-button">
+        Explore Future Forecast →
+      </button>
+
+    </div>
+
+  </div>-->
+  <div class="future-section">
+
+  <h2>📅 Future Weather</h2>
+
+  <p>
+    Choose a date to explore the forecast.
+  </p>
+
+  <select id="futureDate" class="future-select">
+    <option value="">Select a date</option>
+  </select>
+
+  <div id="futureWeather" class="future-weather">
+  </div>
+
+</div>
+
+  <!-- Bottom navigation -->
+  <div class="bottom-nav">
+
+    <button onclick="redirecthomepage()">
+      🏠
+      <span>Home</span>
+    </button>
+
+    <button onclick="redirectaboutpage()">
+      ℹ️
+      <span>About</span>
+    </button>
+
+    <button onclick="redirecteventpage()">
+      🎉
+      <span>Event</span>
+    </button>
+
+  </div>
+
+  <script src="JS1.js"></script>
+
+  <script src="functions.js"></script>
+
+</body>
+
+</html>
