@@ -1,0 +1,329 @@
+/* =========================
+   CANIO MAIN MENU
+========================= */
+
+.canio-menu {
+
+  position: relative;
+
+  padding: 30px 20px 25px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.96),
+      rgba(245,255,253,0.96)
+    );
+
+  box-shadow:
+    0 15px 40px rgba(60,80,80,0.15);
+
+}
+
+
+/* LOGO */
+
+.canio-menu-logo {
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,0.12);
+
+  transition: 0.3s ease;
+
+}
+
+.canio-menu-logo:hover {
+
+  transform: rotate(-4deg) scale(1.05);
+
+}
+
+
+/* CANIO TITLE */
+
+.menu-title {
+
+  margin: 10px 0 0;
+
+  font-family: "Trebuchet MS", sans-serif;
+
+  font-size: 32px;
+
+  letter-spacing: 5px;
+
+  color: #43545A;
+
+}
+
+
+/* EXISTING SUBTITLE */
+
+.canio-menu .a10 {
+
+  margin-top: 5px;
+
+  margin-bottom: 18px;
+
+}
+
+
+/* DIVIDER */
+
+.menu-line {
+
+  width: 65px;
+  height: 3px;
+
+  margin: 0 auto 22px;
+
+  border-radius: 10px;
+
+  background: #4CAF50;
+
+}
+
+
+/* NAVIGATION BUTTONS */
+
+.menu-button {
+
+  display: block;
+
+  margin: 0 auto 16px;
+
+  border: 1px solid rgba(76,175,80,0.18);
+
+  background: rgba(255,255,255,0.85);
+
+  color: #43545A;
+
+  font-size: 15px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.07);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+}
+
+
+/* HOVER */
+
+.menu-button:hover {
+
+  transform: translateY(-2px);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 7px 18px rgba(0,0,0,0.12);
+
+}
+
+
+/* SPECIAL EVENT BUTTON */
+
+.event-menu-button {
+
+  color: #c65300;
+
+  border: 2px solid #ffbd66;
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff3d6,
+      #ffffff,
+      #fff3d6
+    );
+
+  box-shadow:
+    0 5px 16px rgba(255,160,50,0.18);
+
+  position: relative;
+
+  overflow: hidden;
+
+}
+
+
+/* EVENT BUTTON SHINE */
+
+.event-menu-button::after {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: -100%;
+
+  width: 70%;
+
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,0.75),
+      transparent
+    );
+
+  transform: skewX(-20deg);
+
+  animation: eventButtonShine 4s infinite;
+
+}
+
+
+@keyframes eventButtonShine {
+
+  0% {
+    left: -100%;
+  }
+
+  35% {
+    left: 140%;
+  }
+
+  100% {
+    left: 140%;
+  }
+
+}
+
+
+/* EVENT MINI CARD */
+
+.event-mini-card {
+
+  width: 300px;
+
+  margin: 5px auto 18px;
+
+  padding: 12px 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  text-align: left;
+
+  border-radius: 15px;
+
+  background: #fff8ec;
+
+  border: 1px solid #ffd59b;
+
+  color: #754015;
+
+}
+
+
+/* EVENT ICON */
+
+.event-mini-icon {
+
+  width: 38px;
+
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 12px;
+
+  background: #ffb347;
+
+  font-size: 21px;
+
+}
+
+
+/* EVENT CARD TEXT */
+
+.event-mini-card div {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+
+}
+
+.event-mini-card strong {
+
+  font-size: 13px;
+
+}
+
+.event-mini-card small {
+
+  font-size: 11px;
+
+  opacity: 0.65;
+
+}
+
+
+/* FOOTER */
+
+.menu-footer {
+
+  margin: 5px 0 0;
+
+  font-size: 11px;
+
+  letter-spacing: 1px;
+
+  opacity: 0.45;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+  .canio-menu {
+
+    padding-left: 15px;
+
+    padding-right: 15px;
+
+  }
+
+  .menu-title {
+
+    font-size: 28px;
+
+  }
+
+  .event-mini-card {
+
+    width: 300px;
+
+    max-width: 100%;
+
+  }
+
+}
