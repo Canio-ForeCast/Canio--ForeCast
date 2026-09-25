@@ -1,79 +1,614 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>CANIO - Events</title>
+<meta charset="UTF-8">
 
-  <link rel="stylesheet" href="CSS1.css">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>CANIO | Ganesh Chaturthi</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =========================
+   CANIO GANESH CHATURTHI
+   SPECIAL EVENT PAGE
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25), transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.18), transparent 30%),
+        linear-gradient(135deg, #ff7a00, #ffb300, #e84b1a);
+    color: #351400;
+}
+
+
+/* FLOATING PARTICLES */
+
+.particle {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.65);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatParticle linear infinite;
+}
+
+.p1 { left: 10%; animation-duration: 8s; }
+.p2 { left: 25%; animation-duration: 11s; }
+.p3 { left: 42%; animation-duration: 9s; }
+.p4 { left: 61%; animation-duration: 13s; }
+.p5 { left: 78%; animation-duration: 10s; }
+.p6 { left: 91%; animation-duration: 12s; }
+
+@keyframes floatParticle {
+
+    0% {
+        transform: translateY(110vh) scale(0.5);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+
+/* TOP BAR */
+
+.event-topbar {
+    width: 100%;
+    padding: 18px 22px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.event-brand {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: white;
+}
+
+.event-badge {
+    padding: 8px 14px;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.85);
+
+    font-size: 13px;
+    font-weight: bold;
+
+    color: #d84c00;
+}
+
+
+/* MAIN */
+
+.event-container {
+
+    width: min(92%, 700px);
+
+    margin: 0 auto;
+
+    padding: 55px 0 100px;
+
+    text-align: center;
+}
+
+
+/* GANESH SYMBOL */
+
+.ganesh-symbol {
+
+    width: 130px;
+    height: 130px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.92);
+
+    font-size: 70px;
+
+    box-shadow:
+        0 10px 35px rgba(80,30,0,0.25);
+
+    animation: gentleFloat 3s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+
+/* TITLES */
+
+.small-title {
+
+    color: white;
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    opacity: 0.9;
+
+    margin-bottom: 10px;
+}
+
+h1 {
+
+    margin: 0;
+
+    font-size: clamp(38px, 9vw, 68px);
+
+    color: white;
+
+    line-height: 1.05;
+
+    text-shadow:
+        0 5px 15px rgba(80,30,0,0.25);
+}
+
+.subtitle {
+
+    margin: 18px auto 0;
+
+    max-width: 550px;
+
+    color: rgba(255,255,255,0.92);
+
+    font-size: 18px;
+
+    line-height: 1.6;
+}
+
+
+/* DIVIDER */
+
+.divider {
+
+    width: 100px;
+    height: 4px;
+
+    margin: 28px auto;
+
+    border-radius: 10px;
+
+    background: white;
+}
+
+
+/* MAIN CARD */
+
+.festival-card {
+
+    margin-top: 35px;
+
+    padding: 30px 25px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.88);
+
+    box-shadow:
+        0 15px 45px rgba(70,30,0,0.2);
+
+    backdrop-filter: blur(10px);
+}
+
+.festival-card h2 {
+
+    margin-top: 0;
+
+    font-size: 26px;
+
+    color: #d94c00;
+}
+
+.festival-card p {
+
+    color: #5d351d;
+
+    line-height: 1.7;
+
+    font-size: 16px;
+}
+
+
+/* WEATHER CONNECTION */
+
+.weather-message {
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    background: #fff4df;
+
+    border: 2px solid #ffd18a;
+}
+
+.weather-message .icon {
+
+    font-size: 35px;
+}
+
+.weather-message h3 {
+
+    margin: 8px 0;
+
+    color: #c94600;
+}
+
+.weather-message p {
+
+    margin-bottom: 0;
+
+    font-size: 14px;
+}
+
+
+/* LAST DAY */
+
+.last-day {
+
+    margin-top: 25px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.2);
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    color: white;
+}
+
+.last-day strong {
+
+    font-size: 20px;
+
+    display: block;
+
+    margin-bottom: 5px;
+}
+
+
+/* HOME BUTTON */
+
+.home-button {
+
+    margin-top: 28px;
+
+    padding: 14px 28px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: white;
+
+    color: #d84c00;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 20px rgba(70,30,0,0.2);
+
+    transition: 0.25s;
+}
+
+.home-button:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 25px rgba(70,30,0,0.28);
+}
+
+
+/* FOOTER */
+
+.event-footer {
+
+    margin-top: 45px;
+
+    color: rgba(255,255,255,0.8);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+    .event-topbar {
+        padding: 15px;
+    }
+
+    .event-brand {
+        font-size: 21px;
+    }
+
+    .event-container {
+        padding-top: 40px;
+    }
+
+    .ganesh-symbol {
+        width: 105px;
+        height: 105px;
+        font-size: 57px;
+    }
+
+    .festival-card {
+        padding: 25px 18px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+}
+
+</style>
+
 </head>
 
-<body class="body001">
 
-  <div class="border002">
+<body>
 
-    <br>
 
-    <img src="logo.png" class="logo" alt="CANIO">
+<!-- FLOATING PARTICLES -->
 
-    <br><br>
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+<div class="particle p6"></div>
 
-    <h1 style="font-style: italic;">
-      🎉 CANIO Events
+
+<!-- TOP BAR -->
+
+<header class="event-topbar">
+
+    <div class="event-brand">
+        CANIO
+    </div>
+
+    <div class="event-badge">
+        🎉 EVENT
+    </div>
+
+</header>
+
+
+<!-- MAIN EVENT -->
+
+<main class="event-container">
+
+
+    <!-- GANESH -->
+
+    <div class="ganesh-symbol">
+        🐘
+    </div>
+
+
+    <div class="small-title">
+        CANIO SPECIAL
+    </div>
+
+
+    <h1>
+        Ganesh<br>
+        Chaturthi
     </h1>
 
-    <br>
 
-    <h2>
-      No event currently
-    </h2>
+    <div class="divider"></div>
 
-    <p style="opacity: 0.6;">
-      There are no special events happening right now.
+
+    <p class="subtitle">
+        Celebrating new beginnings, wisdom,
+        happiness and the spirit of togetherness.
     </p>
 
-    <p style="opacity: 0.6;">
-      Something new may appear here soon.
-    </p>
 
-    <br><br>
+    <!-- LAST DAY -->
 
-    <h3 style="font-style: italic;">
-      🌦️ Keep checking CANIO
-    </h3>
+    <div class="last-day">
 
-    <p style="opacity: 0.6;">
-      New events and surprises may arrive in the future.
-    </p>
+        <strong>
+            🪔 Final Day Celebration
+        </strong>
 
-    <br><br><br>
+        Ganpati Bappa Morya! 🙏
 
-  </div>
+    </div>
 
 
-  <div class="bottom-nav">
+    <!-- MAIN CARD -->
 
-    <button onclick="redirecthomepage()">
-      🏠<br>
-      Home
-    </button>
+    <section class="festival-card">
 
-    <button onclick="redirectaboutpage()">
-      ℹ️<br>
-      About
-    </button>
+        <h2>
+            🌺 A CANIO Celebration
+        </h2>
 
-    <button onclick="redirecteventpage()">
-      🎉<br>
-      Event
-    </button>
+        <p>
+            Ganesh Chaturthi marks the celebration
+            of Lord Ganesha and the arrival of new
+            beginnings.
+        </p>
 
-  </div>
+        <p>
+            CANIO wishes you and your family a
+            peaceful, joyful and memorable
+            Ganesh Chaturthi.
+        </p>
 
 
-  <script src="functions.js"></script>
+        <!-- WEATHER CONNECTION -->
+
+        <div class="weather-message">
+
+            <div class="icon">
+                ☀️ ☁️ 🌧️
+            </div>
+
+            <h3>
+                Weather × Celebration
+            </h3>
+
+            <p>
+                Whatever the weather brings,
+                CANIO is here to help you stay
+                prepared for the celebration.
+            </p>
+
+        </div>
+
+
+        <button
+            class="home-button"
+            onclick="redirecthomepage()">
+
+            🌤️ Back to CANIO
+
+        </button>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <div class="event-footer">
+
+        <div>
+            Made with ❤️ by CANIO
+        </div>
+
+        <div>
+            Ganesh Chaturthi 2026
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<script>
+
+/* =========================
+   CANIO EVENT NAVIGATION
+========================= */
+
+function redirecthomepage() {
+
+    window.location.href = "Home.html";
+
+}
+
+
+/* LITTLE FESTIVE INTERACTION */
+
+document.addEventListener("click", function(event) {
+
+    const spark = document.createElement("div");
+
+    spark.textContent = "✨";
+
+    spark.style.position = "fixed";
+    spark.style.left = event.clientX + "px";
+    spark.style.top = event.clientY + "px";
+    spark.style.pointerEvents = "none";
+    spark.style.fontSize = "20px";
+    spark.style.zIndex = "9999";
+
+    document.body.appendChild(spark);
+
+    spark.animate(
+        [
+            {
+                transform: "translateY(0) scale(1)",
+                opacity: 1
+            },
+            {
+                transform: "translateY(-45px) scale(0.4)",
+                opacity: 0
+            }
+        ],
+        {
+            duration: 700,
+            easing: "ease-out"
+        }
+    );
+
+    setTimeout(function() {
+        spark.remove();
+    }, 700);
+
+});
+
+</script>
+
 
 </body>
 
