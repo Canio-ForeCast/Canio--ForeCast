@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#310b16">
-  <title>CANIO | Dussehra Special</title>
+  <meta name="theme-color" content="#101827">
+  <title>CANIO | Events</title>
 
   <link rel="stylesheet" href="CSS1.css">
 
@@ -14,215 +14,317 @@
       box-sizing: border-box;
     }
 
-    body.dussehra-page {
+    body.event-empty-page {
       margin: 0;
       min-height: 100vh;
-      overflow-x: hidden;
       font-family: "Trebuchet MS", Arial, sans-serif;
-      color: #fff4dc;
-      background:
-        radial-gradient(ellipse at 50% 35%, #77251e 0%, transparent 55%),
-        linear-gradient(150deg, #190711, #43101c 55%, #170910);
+      color: #edf4ff;
+      background: #101827;
+      overflow-x: hidden;
     }
 
-    .festive-nav {
+    .ambient {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 12% 12%, #315c743d, transparent 42%),
+        radial-gradient(ellipse at 90% 85%, #4b50853d, transparent 40%),
+        linear-gradient(145deg, #101827, #172538 55%, #101827);
+    }
+
+    .ambient::before,
+    .ambient::after {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .22;
+      animation: drift 13s ease-in-out infinite alternate;
+    }
+
+    .ambient::before {
+      background: #4a9dba;
+      top: -150px;
+      left: -130px;
+    }
+
+    .ambient::after {
+      background: #7277cb;
+      right: -150px;
+      bottom: -150px;
+      animation-delay: -6s;
+    }
+
+    @keyframes drift {
+      to { transform: translate(45px, 35px) scale(1.15); }
+    }
+
+    .events-nav {
+      position: relative;
+      z-index: 1;
+      min-height: 76px;
+      padding: 16px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ffffff12;
+      background: #10182775;
+      backdrop-filter: blur(18px);
+    }
+
+    .events-brand {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 18px 22px;
-      border-bottom: 1px solid #b886463b;
-      background: #190711a8;
-    }
-
-    .festive-brand {
-      font-size: 24px;
+      gap: 12px;
+      color: #f2f7ff;
+      font-size: 23px;
       font-weight: 900;
-      letter-spacing: 5px;
-      color: #ffd98b;
+      letter-spacing: 4px;
     }
 
-    .festive-tag {
-      padding: 8px 13px;
-      border: 1px solid #d9a84e77;
+    .events-brand img {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .events-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border: 1px solid #ffffff17;
       border-radius: 30px;
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: #ffd98b;
+      background: #ffffff08;
+      color: #c0d0e4;
+      font-size: 12px;
+      letter-spacing: 1px;
     }
 
-    .festive-main {
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #8eabb8;
+      box-shadow: 0 0 10px #8eabb855;
+    }
+
+    .events-main {
+      position: relative;
+      z-index: 1;
       width: min(92%, 680px);
+      min-height: calc(100vh - 150px);
       margin: auto;
-      padding: 48px 0 45px;
+      padding: 55px 0 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
     }
 
-    .festive-eyebrow {
-      color: #f6c86f;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 5px;
-    }
-
-    .festive-emblem {
-      width: 132px;
-      height: 132px;
+    .empty-illustration {
+      position: relative;
+      width: 178px;
+      height: 160px;
       display: grid;
       place-items: center;
-      margin: 25px auto;
-      border: 1px solid #e8b960;
+      margin-bottom: 34px;
+    }
+
+    .orbit {
+      position: absolute;
+      inset: 8px 0;
+      border: 1px solid #b8d8f01b;
       border-radius: 50%;
-      background: radial-gradient(circle, #75301d, #300c18);
-      box-shadow: 0 0 35px #ed9c3033, inset 0 0 25px #ed9c3020;
-      font-size: 64px;
-      animation: emblemGlow 3s ease-in-out infinite;
+      transform: rotate(-25deg);
     }
 
-    @keyframes emblemGlow {
-      0%, 100% { box-shadow: 0 0 25px #ed9c3022; }
-      50% { box-shadow: 0 0 48px #ed9c3060; }
+    .orbit-two {
+      inset: 0 18px;
+      transform: rotate(55deg);
+      border-color: #b8d8f02b;
     }
 
-    .festive-main h1 {
-      margin: 0;
-      color: #ffe2a0;
-      font-family: Georgia, serif;
-      font-size: clamp(42px, 10vw, 76px);
-      line-height: 1.05;
-      letter-spacing: 1px;
-      text-shadow: 0 5px 30px #f7b7472b;
-    }
-
-    .festive-subtitle {
-      max-width: 480px;
-      margin: 20px auto;
-      color: #e9c9b4;
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    .gold-divider {
-      width: 85px;
-      height: 2px;
-      margin: 25px auto;
-      background: linear-gradient(90deg, transparent, #f4c56c, transparent);
-    }
-
-    .dussehra-card {
-      margin-top: 34px;
-      padding: 28px 23px;
-      border: 1px solid #dca75055;
-      border-radius: 25px;
-      background: linear-gradient(145deg, #6b281d77, #260d1977);
-      box-shadow: 0 15px 45px #00000025;
-    }
-
-    .dussehra-card h2 {
-      margin-top: 0;
-      color: #ffda8c;
-      font-family: Georgia, serif;
-      font-size: 27px;
-    }
-
-    .dussehra-card p {
-      color: #efd8c5;
-      font-size: 15px;
-      line-height: 1.85;
-    }
-
-    .virtue-grid {
+    .empty-icon {
+      position: relative;
+      width: 100px;
+      height: 100px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 24px;
+      place-items: center;
+      border: 1px solid #ffffff1c;
+      border-radius: 31px;
+      background: linear-gradient(145deg, #ffffff16, #ffffff05);
+      box-shadow: 0 20px 65px #00000030, inset 0 1px #ffffff20;
+      backdrop-filter: blur(15px);
+      font-size: 42px;
+      animation: float 4s ease-in-out infinite;
     }
 
-    .virtue {
-      padding: 16px 5px;
-      border: 1px solid #e8bb6240;
-      border-radius: 15px;
-      background: #ffffff08;
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
 
-    .virtue span {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 25px;
+    .eyebrow {
+      margin-bottom: 15px;
+      color: #91b6c9;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 4px;
     }
 
-    .virtue strong {
-      color: #ffda8c;
-      font-size: 12px;
+    .events-main h1 {
+      margin: 0;
+      color: #f1f6ff;
+      font-size: clamp(36px, 7vw, 56px);
+      line-height: 1.12;
+      letter-spacing: -1.8px;
+      font-weight: 800;
     }
 
-    .festival-wish {
-      margin-top: 25px;
-      padding: 21px 15px;
-      border-radius: 18px;
-      background: #f2c87512;
-      color: #ffe1a2;
-      line-height: 1.8;
+    .events-main h1 span {
+      color: #91b6c9;
     }
 
-    .festival-wish strong {
-      display: block;
-      font-size: 18px;
-    }
-
-    .back-home {
-      margin-top: 27px;
-      padding: 14px 25px;
-      border: 1px solid #ffe0a0;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #ffe4a0, #d99b40);
-      color: #35101a;
+    .empty-description {
+      max-width: 450px;
+      margin: 20px auto 0;
+      color: #a9b8cc;
       font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .event-status-card {
+      width: min(100%, 390px);
+      margin-top: 34px;
+      padding: 17px 19px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+      border: 1px solid #ffffff12;
+      border-radius: 19px;
+      background: linear-gradient(120deg, #ffffff0c, #ffffff04);
+      box-shadow: 0 15px 45px #00000012;
+    }
+
+    .status-icon {
+      width: 43px;
+      height: 43px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border: 1px solid #ffffff12;
+      border-radius: 14px;
+      background: #ffffff08;
+      color: #b6d3e3;
+      font-size: 21px;
+    }
+
+    .status-copy {
+      flex: 1;
+    }
+
+    .status-copy strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #e3edf9;
+      font-size: 13px;
+    }
+
+    .status-copy small {
+      color: #91a3b9;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .status-check {
+      color: #9bb7c6;
+      font-size: 19px;
+    }
+
+    .events-home {
+      margin-top: 28px;
+      padding: 14px 23px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border: 1px solid #a6c8d34d;
+      border-radius: 14px;
+      background: linear-gradient(120deg, #b5d9e21a, #ffffff08);
+      color: #eaf5ff;
+      font-size: 14px;
       font-weight: bold;
       cursor: pointer;
-      transition: transform .2s, box-shadow .2s;
+      transition: transform .22s ease, background .22s ease, border-color .22s ease;
     }
 
-    .back-home:hover {
+    .events-home:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px #e5a43c35;
+      background: #b5d9e226;
+      border-color: #a6c8d38c;
     }
 
-    .festive-footer {
-      margin-top: 35px;
-      color: #d9bca5;
-      font-size: 12px;
-      line-height: 2;
-      opacity: .75;
+    .events-home:focus-visible {
+      outline: 2px solid #a6c8d3;
+      outline-offset: 4px;
     }
 
-    .floating-diya {
-      position: fixed;
-      z-index: 0;
-      pointer-events: none;
-      opacity: .28;
-      animation: diyaRise 12s linear infinite;
-    }
-
-    .diya-one { left: 8%; animation-delay: -2s; }
-    .diya-two { right: 8%; animation-delay: -8s; }
-    .diya-three { left: 75%; animation-delay: -5s; }
-
-    @keyframes diyaRise {
-      from { transform: translateY(105vh); }
-      to { transform: translateY(-15vh); }
-    }
-
-    .festive-main, .festive-nav {
+    .events-footer {
       position: relative;
       z-index: 1;
+      padding: 19px;
+      border-top: 1px solid #ffffff0d;
+      color: #71849c;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 1px;
     }
 
-    @media (max-width: 420px) {
-      .festive-main { padding-top: 35px; }
-      .festive-emblem { width: 110px; height: 110px; font-size: 53px; }
-      .dussehra-card { padding: 23px 15px; }
-      .virtue-grid { gap: 6px; }
-      .virtue strong { font-size: 11px; }
+    @media (max-width: 480px) {
+      .events-nav {
+        padding: 15px 5%;
+      }
+
+      .events-brand {
+        font-size: 20px;
+        gap: 9px;
+      }
+
+      .events-brand img {
+        width: 34px;
+        height: 34px;
+      }
+
+      .events-label {
+        padding: 8px 10px;
+        font-size: 10px;
+      }
+
+      .events-main {
+        padding-top: 38px;
+      }
+
+      .empty-illustration {
+        transform: scale(.9);
+        margin-bottom: 23px;
+      }
+
+      .events-main h1 {
+        letter-spacing: -1px;
+      }
+
+      .empty-description {
+        font-size: 14px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -234,79 +336,68 @@
   </style>
 </head>
 
-<body class="dussehra-page">
+<body class="event-empty-page">
 
-  <header class="festive-nav">
-    <div class="festive-brand">CANIO</div>
-    <div class="festive-tag">FESTIVAL EDITION</div>
-  </header>
+  <div class="ambient" aria-hidden="true"></div>
 
-  <div class="floating-diya diya-one">🪔</div>
-  <div class="floating-diya diya-two">✨</div>
-  <div class="floating-diya diya-three">🪔</div>
-
-  <main class="festive-main">
-
-    <div class="festive-eyebrow">CANIO PRESENTS</div>
-
-    <div class="festive-emblem" aria-label="Decorative festival symbol">
-      🏹
+  <header class="events-nav">
+    <div class="events-brand">
+      <img src="logo.png" alt="">
+      <span>CANIO</span>
     </div>
 
-    <h1>Happy<br>Dussehra</h1>
+    <div class="events-label">
+      <span class="status-dot"></span>
+      EVENTS
+    </div>
+  </header>
 
-    <div class="gold-divider"></div>
+  <main class="events-main">
 
-    <p class="festive-subtitle">
-      A celebration of courage, truth and the victory
-      of good over evil. May every new beginning
-      bring hope and light.
+    <div class="empty-illustration" aria-hidden="true">
+      <div class="orbit"></div>
+      <div class="orbit orbit-two"></div>
+      <div class="empty-icon">✦</div>
+    </div>
+
+    <div class="eyebrow">THE CANIO EVENT SPACE</div>
+
+    <h1>
+      Nothing on the<br>
+      <span>calendar. Yet.</span>
+    </h1>
+
+    <p class="empty-description">
+      Every great moment starts somewhere.
+      There are no events to explore right now,
+      but something worth looking forward to
+      might be just around the corner.
     </p>
 
-    <section class="dussehra-card">
-      <h2>✨ The Festival of Victory</h2>
+    <section class="event-status-card">
+      <div class="status-icon">✧</div>
 
-      <p>
-        Dussehra, also known as Vijayadashami,
-        celebrates the triumph of good over evil.
-        May this festival inspire us to choose
-        kindness, stand for truth and move forward
-        with courage.
-      </p>
-
-      <div class="virtue-grid">
-        <div class="virtue">
-          <span>🪔</span>
-          <strong>HOPE</strong>
-        </div>
-        <div class="virtue">
-          <span>🏹</span>
-          <strong>COURAGE</strong>
-        </div>
-        <div class="virtue">
-          <span>🌟</span>
-          <strong>VICTORY</strong>
-        </div>
+      <div class="status-copy">
+        <strong>You're all caught up</strong>
+        <small>No upcoming events are listed at the moment.</small>
       </div>
 
-      <div class="festival-wish">
-        <strong>May good always prevail.</strong>
-        CANIO wishes you and your family a joyful
-        and peaceful Dussehra. 🙏
-      </div>
-
-      <button class="back-home" onclick="redirecthomepage()">
-        ← Back to CANIO
-      </button>
+      <div class="status-check" aria-hidden="true">✓</div>
     </section>
 
-    <footer class="festive-footer">
-      Made with ❤️ by CANIO<br>
-      Weather • Forecast • Celebrations
-    </footer>
+    <button class="events-home" onclick="redirecthomepage()">
+      <span>←</span>
+      <span>Back to CANIO</span>
+    </button>
 
   </main>
 
+  <footer class="events-footer">
+    CANIO · WEATHER, FORECAST & MORE
+  </footer>
+
   <script src="functions.js"></script>
+
 </body>
-</html>
+  </html>
+  
