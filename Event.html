@@ -2,401 +2,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101827">
-  <title>CANIO | Events</title>
-
-  <link rel="stylesheet" href="CSS1.css">
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body.event-empty-page {
-      margin: 0;
-      min-height: 100vh;
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      color: #edf4ff;
-      background: #101827;
-      overflow-x: hidden;
-    }
-
-    .ambient {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 12% 12%, #315c743d, transparent 42%),
-        radial-gradient(ellipse at 90% 85%, #4b50853d, transparent 40%),
-        linear-gradient(145deg, #101827, #172538 55%, #101827);
-    }
-
-    .ambient::before,
-    .ambient::after {
-      content: "";
-      position: absolute;
-      width: 340px;
-      height: 340px;
-      border-radius: 50%;
-      filter: blur(90px);
-      opacity: .22;
-      animation: drift 13s ease-in-out infinite alternate;
-    }
-
-    .ambient::before {
-      background: #4a9dba;
-      top: -150px;
-      left: -130px;
-    }
-
-    .ambient::after {
-      background: #7277cb;
-      right: -150px;
-      bottom: -150px;
-      animation-delay: -6s;
-    }
-
-    @keyframes drift {
-      to { transform: translate(45px, 35px) scale(1.15); }
-    }
-
-    .events-nav {
-      position: relative;
-      z-index: 1;
-      min-height: 76px;
-      padding: 16px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #ffffff12;
-      background: #10182775;
-      backdrop-filter: blur(18px);
-    }
-
-    .events-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #f2f7ff;
-      font-size: 23px;
-      font-weight: 900;
-      letter-spacing: 4px;
-    }
-
-    .events-brand img {
-      width: 39px;
-      height: 39px;
-      border-radius: 12px;
-      object-fit: cover;
-    }
-
-    .events-label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 13px;
-      border: 1px solid #ffffff17;
-      border-radius: 30px;
-      background: #ffffff08;
-      color: #c0d0e4;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #8eabb8;
-      box-shadow: 0 0 10px #8eabb855;
-    }
-
-    .events-main {
-      position: relative;
-      z-index: 1;
-      width: min(92%, 680px);
-      min-height: calc(100vh - 150px);
-      margin: auto;
-      padding: 55px 0 35px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .empty-illustration {
-      position: relative;
-      width: 178px;
-      height: 160px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 34px;
-    }
-
-    .orbit {
-      position: absolute;
-      inset: 8px 0;
-      border: 1px solid #b8d8f01b;
-      border-radius: 50%;
-      transform: rotate(-25deg);
-    }
-
-    .orbit-two {
-      inset: 0 18px;
-      transform: rotate(55deg);
-      border-color: #b8d8f02b;
-    }
-
-    .empty-icon {
-      position: relative;
-      width: 100px;
-      height: 100px;
-      display: grid;
-      place-items: center;
-      border: 1px solid #ffffff1c;
-      border-radius: 31px;
-      background: linear-gradient(145deg, #ffffff16, #ffffff05);
-      box-shadow: 0 20px 65px #00000030, inset 0 1px #ffffff20;
-      backdrop-filter: blur(15px);
-      font-size: 42px;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .eyebrow {
-      margin-bottom: 15px;
-      color: #91b6c9;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 4px;
-    }
-
-    .events-main h1 {
-      margin: 0;
-      color: #f1f6ff;
-      font-size: clamp(36px, 7vw, 56px);
-      line-height: 1.12;
-      letter-spacing: -1.8px;
-      font-weight: 800;
-    }
-
-    .events-main h1 span {
-      color: #91b6c9;
-    }
-
-    .empty-description {
-      max-width: 450px;
-      margin: 20px auto 0;
-      color: #a9b8cc;
-      font-size: 15px;
-      line-height: 1.9;
-    }
-
-    .event-status-card {
-      width: min(100%, 390px);
-      margin-top: 34px;
-      padding: 17px 19px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-align: left;
-      border: 1px solid #ffffff12;
-      border-radius: 19px;
-      background: linear-gradient(120deg, #ffffff0c, #ffffff04);
-      box-shadow: 0 15px 45px #00000012;
-    }
-
-    .status-icon {
-      width: 43px;
-      height: 43px;
-      flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      border: 1px solid #ffffff12;
-      border-radius: 14px;
-      background: #ffffff08;
-      color: #b6d3e3;
-      font-size: 21px;
-    }
-
-    .status-copy {
-      flex: 1;
-    }
-
-    .status-copy strong {
-      display: block;
-      margin-bottom: 5px;
-      color: #e3edf9;
-      font-size: 13px;
-    }
-
-    .status-copy small {
-      color: #91a3b9;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    .status-check {
-      color: #9bb7c6;
-      font-size: 19px;
-    }
-
-    .events-home {
-      margin-top: 28px;
-      padding: 14px 23px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      border: 1px solid #a6c8d34d;
-      border-radius: 14px;
-      background: linear-gradient(120deg, #b5d9e21a, #ffffff08);
-      color: #eaf5ff;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform .22s ease, background .22s ease, border-color .22s ease;
-    }
-
-    .events-home:hover {
-      transform: translateY(-3px);
-      background: #b5d9e226;
-      border-color: #a6c8d38c;
-    }
-
-    .events-home:focus-visible {
-      outline: 2px solid #a6c8d3;
-      outline-offset: 4px;
-    }
-
-    .events-footer {
-      position: relative;
-      z-index: 1;
-      padding: 19px;
-      border-top: 1px solid #ffffff0d;
-      color: #71849c;
-      text-align: center;
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
-
-    @media (max-width: 480px) {
-      .events-nav {
-        padding: 15px 5%;
-      }
-
-      .events-brand {
-        font-size: 20px;
-        gap: 9px;
-      }
-
-      .events-brand img {
-        width: 34px;
-        height: 34px;
-      }
-
-      .events-label {
-        padding: 8px 10px;
-        font-size: 10px;
-      }
-
-      .events-main {
-        padding-top: 38px;
-      }
-
-      .empty-illustration {
-        transform: scale(.9);
-        margin-bottom: 23px;
-      }
-
-      .events-main h1 {
-        letter-spacing: -1px;
-      }
-
-      .empty-description {
-        font-size: 14px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Conclusion | Sustainable Architecture</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#eef3ef;
+  color:#20352e;
+  line-height:1.6;
+}
+header{
+  background:#164b3b;
+  color:white;
+  text-align:center;
+  padding:35px 18px;
+}
+header h1{font-size:clamp(23px,4vw,38px);margin:0}
+header p{color:#d8eee2;margin:10px 0 0}
+main{max-width:1000px;margin:25px auto;padding:15px}
+h2{color:#176044;margin-top:30px}
+.intro{
+  background:white;padding:20px;border-radius:12px;
+  border-left:5px solid #29966b;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;margin-top:18px;
+}
+.card{
+  background:white;padding:20px;border-radius:12px;
+  box-shadow:0 3px 12px #0000000c;
+}
+.card h3{color:#176044;margin-top:0}
+table{
+  width:100%;border-collapse:collapse;background:white;
+  margin-top:15px;border-radius:10px;overflow:hidden;
+}
+th,td{padding:13px;text-align:left;border-bottom:1px solid #dce8df}
+th{background:#176044;color:white}
+tr:last-child td{border-bottom:none}
+.conclusion{
+  background:#164b3b;color:white;padding:25px;
+  border-radius:14px;margin-top:25px;
+}
+.conclusion h2{color:#bcebd0;margin-top:0}
+.highlight{
+  background:#dcefe3;padding:15px;border-radius:9px;
+  margin-top:15px;font-weight:bold;text-align:center;
+}
+footer{text-align:center;padding:22px;color:#61756b;font-size:13px}
+@media(max-width:600px){
+  main{padding:12px}
+  table{font-size:13px}
+  th,td{padding:9px}
+}
+</style>
 </head>
+<body>
 
-<body class="event-empty-page">
+<header>
+  <h1>OPTIMISING ARCHITECTURAL DESIGN THROUGH NATURAL RESOURCE UTILISATION</h1>
+  <p>A Study of Natural Lighting, Ventilation and Energy Efficiency in Buildings</p>
+</header>
 
-  <div class="ambient" aria-hidden="true"></div>
+<main>
 
-  <header class="events-nav">
-    <div class="events-brand">
-      <img src="logo.png" alt="">
-      <span>CANIO</span>
-    </div>
+<section class="intro">
+  <h2>Comparative Study & Overall Findings</h2>
+  <p>
+    This study examines how architectural planning can make better use
+    of natural resources. Two different building categories are considered:
+    Dadjanagar Madrasa as an institutional building and a residential
+    building as a domestic example.
+  </p>
+</section>
 
-    <div class="events-label">
-      <span class="status-dot"></span>
-      EVENTS
-    </div>
-  </header>
+<h2>Comparison of the Two Buildings</h2>
 
-  <main class="events-main">
-
-    <div class="empty-illustration" aria-hidden="true">
-      <div class="orbit"></div>
-      <div class="orbit orbit-two"></div>
-      <div class="empty-icon">✦</div>
-    </div>
-
-    <div class="eyebrow">THE CANIO EVENT SPACE</div>
-
-    <h1>
-      Nothing on the<br>
-      <span>calendar. Yet.</span>
-    </h1>
-
-    <p class="empty-description">
-      Every great moment starts somewhere.
-      There are no events to explore right now,
-      but something worth looking forward to
-      might be just around the corner.
+<div class="grid">
+  <div class="card">
+    <h3>01. Dadjanagar Madrasa</h3>
+    <p><b>Building type:</b> Institutional</p>
+    <p>
+      Institutional buildings accommodate many occupants and require
+      suitable daylight and ventilation across classrooms and shared spaces.
+      Thoughtful window placement, suitable openings and effective building
+      orientation can improve indoor conditions.
     </p>
+  </div>
 
-    <section class="event-status-card">
-      <div class="status-icon">✧</div>
+  <div class="card">
+    <h3>02. Residential Building</h3>
+    <p><b>Building type:</b> Residential</p>
+    <p>
+      Homes require comfortable living spaces throughout the day.
+      Properly positioned windows, cross-ventilation and suitable shading
+      can help bring natural light and fresh air indoors.
+    </p>
+  </div>
+</div>
 
-      <div class="status-copy">
-        <strong>You're all caught up</strong>
-        <small>No upcoming events are listed at the moment.</small>
-      </div>
+<h2>Key Comparison</h2>
 
-      <div class="status-check" aria-hidden="true">✓</div>
-    </section>
+<table>
+  <tr>
+    <th>Parameter</th>
+    <th>Dadjanagar Madrasa</th>
+    <th>Residential Building</th>
+  </tr>
+  <tr>
+    <td>Natural Lighting</td>
+    <td>Daylight for classrooms and common areas</td>
+    <td>Daylight for living rooms and bedrooms</td>
+  </tr>
+  <tr>
+    <td>Ventilation</td>
+    <td>Airflow across occupied institutional spaces</td>
+    <td>Cross-ventilation within individual rooms</td>
+  </tr>
+  <tr>
+    <td>Energy Efficiency</td>
+    <td>Potential reduction in daytime lighting and cooling demand</td>
+    <td>Potential reduction in artificial lighting and cooling demand</td>
+  </tr>
+  <tr>
+    <td>Design Priority</td>
+    <td>Comfort for multiple occupants</td>
+    <td>Comfort and privacy for residents</td>
+  </tr>
+</table>
 
-    <button class="events-home" onclick="redirecthomepage()">
-      <span>←</span>
-      <span>Back to CANIO</span>
-    </button>
+<h2>Major Findings</h2>
 
-  </main>
+<div class="grid">
+  <div class="card">
+    <h3>Natural Lighting</h3>
+    <p>
+      Correct window size and placement can increase daylight penetration
+      and reduce the need for artificial lighting during suitable daytime hours.
+    </p>
+  </div>
 
-  <footer class="events-footer">
-    CANIO · WEATHER, FORECAST & MORE
-  </footer>
+  <div class="card">
+    <h3>Natural Ventilation</h3>
+    <p>
+      Properly designed openings can encourage natural airflow,
+      improve indoor air circulation and support thermal comfort.
+    </p>
+  </div>
 
-  <script src="functions.js"></script>
+  <div class="card">
+    <h3>Energy Efficiency</h3>
+    <p>
+      Reducing unnecessary dependence on electric lighting and mechanical
+      cooling can help lower energy demand and environmental impact.
+    </p>
+  </div>
+</div>
+
+<section class="conclusion">
+  <h2>Final Conclusion</h2>
+  <p>
+    The study demonstrates that sustainable architecture is not only
+    about constructing new buildings, but also about designing and
+    improving spaces intelligently.
+  </p>
+  <p>
+    Although institutional and residential buildings have different
+    requirements, both can benefit from the effective utilisation of
+    natural sunlight and ventilation. By considering building orientation,
+    window placement, airflow and shading, architects can create healthier,
+    more comfortable and energy-efficient environments.
+  </p>
+  <div class="highlight">
+    "The most sustainable energy is the energy we do not need to consume."
+  </div>
+</section>
+
+</main>
+
+<footer>
+  RTU Sustainable Development Exhibition | Architecture & Sustainability
+</footer>
 
 </body>
   </html>
